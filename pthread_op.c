@@ -23,7 +23,6 @@
 #include "sock.h"
 #include "tick.h"
 #include "pthread_op.h"
-#include "http.h"
 #include "curl_op.h"
 #include "linkedlist.h"
 
@@ -231,7 +230,7 @@ void *consumer(void *data)
 				"?mac=",d.pmac,
 				"&time=",d.timest,
 				"&deviceId=",config->deviceid,
-				"&devicephone=",config->P_t_Phonenum->plocal_phone,
+				"&devicephone=",(config->P_t_Phonenum==NULL)?"":config->P_t_Phonenum->plocal_phone,
 				"&type");
 
 		}else {
