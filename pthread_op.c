@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <stdlib.h>
-
+#include <ctype.h>
 
 #include "config.h"
 #include "debug.h"
@@ -186,6 +186,10 @@ void *producer(void *data)
 
 				pp = parse_extract_found_mac(content,array);
 				memset(content,0,sizeof(content));
+				for (char* ptr = pp->pmac; *ptr; ptr++) {  
+					*ptr = tolower(*ptr);  //转小写
+					//*ptr = toupper(*ptr);  //转大写
+				 }  
 				debug(LOG_DEBUG,"pp->pmac=%s\n",pp->pmac);
 				debug(LOG_DEBUG,"pp->timest=%s\n",pp->timest);
 				sb=server_binseach(config->P_t_Monitor_server_mac,pp->pmac);
