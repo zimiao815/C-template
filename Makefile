@@ -1,3 +1,5 @@
+###############git#######
+
 CFLAGS=-O0 -g -D_GNU_SOURCE
 LDFLAGS= -lpthread  -lcurl #-lssl -lcrypto  #-lm -luci  -lz
 
